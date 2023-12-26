@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<th:block layout:fragment="css">
+    <style>
+
+    </style>
+</th:block>
+<div th:fragment="header">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container px-4 px-lg-5">
+                <span>
+                    <a class="navbar-brand" href="/">
+                        <b style="font-size: 28px; color:#B22222; text-shadow: -1px 0 #0D0D0D, 0 1px #0D0D0D, 1px 0 #0D0D0D, 0 -1px #0D0D0D;">marketinall</b>
+                    </a>
+                </span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/item/write">상품등록</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">상품관리</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">장바구니</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">구매이력</a></li>
+                    <li sec:authorize="isAnonymous()" class="nav-item"><a class="nav-link" href="/member/login" >로그인</a></li>
+                    <li sec:authorize="isAnonymous()" class="nav-item"><a class="nav-link" href="/member/join">회원가입</a></li>
+                    <li class="nav-item" sec:authorize="isAuthenticated()">
+                        <a class="nav-link" href="/member/logout">마이페이지</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="isAuthenticated()">
+                        <a class="nav-link" href="/member/logout">로그아웃</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0" th:action="@{/}" method="get">
+                    <input name="searchQuery" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header-->
+    <header class="bg-dark py-5" style="background: url(/img/main2.jpg);background-size: cover">
+        <div class="container px-4 px-lg-5 my-5" >
+            <div class="text-center text-white" >
+                <h1 class="display-4 fw-bolder">중고 유아동/출산물품 사이트</h1>
+                <p class="lead fw-normal text-white-50 mb-0">marketinall</p>
+            </div>
+        </div>
+    </header>
+</div>
+</html>
